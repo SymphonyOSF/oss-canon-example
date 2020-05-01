@@ -1,0 +1,236 @@
+{
+	"canon": "0.0.1",
+	"info": {
+		"title": "Japigen Simple RPC Test Case",
+		"license": {
+			"name": "Apache2"
+		}
+	},
+	"id": "org.symphonyoss.s2.canon.example.presence",
+  "version": "0.1",
+  "basePath": "/presence/v2",
+  "model": {
+		"javaGenPackage": "org.symphonyoss.s2.canon.example.presence.canon",
+		"javaFacadePackage": "org.symphonyoss.s2.canon.example.presence.facade"
+	},
+	"methods": {
+		"/users": {
+      "description": "Fetch all users' presence.",
+      "parameterSets": [
+        "#/components/parameterSets/pagination"
+      ],
+      "get": {
+        "response": {
+          "schema": {
+            "$ref": "#/components/schemas/UserPresencePage"
+          }
+        }
+      },
+      "put": {
+        "description": "A weird no payload and no response mehod."
+      }
+    },
+    "/users/{userId}": {
+      "description": "Manipulate a single user's presence.",
+      "parameters": {
+        "userId": {
+          "in": "path",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/UserId"
+          }
+        }
+      },
+      "get": {
+        "description": "Fetch a single user's presence.",
+        "response": {
+          "required": false,
+          "schema": {
+            "$ref": "#/components/schemas/UserPresence"
+          }
+        }
+      },
+      "put": {
+        "description": "Set a single user's presence.",
+        "payload": {
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/UserPresenceInfo"
+          }
+        }
+      }
+    },
+    "/users/{userId}/test": {
+      "description": "Manipulate a single user's presence.",
+      "parameters": {
+        "userId": {
+          "in": "path",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/UserId"
+          }
+        }
+      },
+      "get": {
+        "description": "Fetch a single user's presence.",
+        "response": {
+          "schema": {
+            "$ref": "#/components/schemas/UserPresence"
+          }
+        }
+      }
+    },
+    "/users/update": {
+      "description": "Manipulate a batch of users' presence.",
+      "post": {
+        "payload": {
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/UserPresenceList"
+          }
+        }
+      }
+    },
+    "/users/fetch": {
+      "description": "Fetch a batch of users' presence.",
+      "post": {
+        "payload": {
+          "required": true,
+          "multiple": true,
+          "schema": {
+            "$ref": "#/components/schemas/UserId"
+          }
+        },
+        "response": {
+          "required": false,
+          "multiple": true,
+          "schema": {
+            "$ref": "#/components/schemas/UserPresence"
+          }
+        }
+      }
+    }
+	},
+	"components": {
+		"schemas": {
+			"UserId": {
+        "description": "A Symphony external user ID.",
+        "type": "integer",
+        "format": "int64",
+        "minimum": 0
+      },
+      "Cursor": {
+        "description": "An opaque token returned by the server to allow the next page to be requested.",
+        "type": "string",
+        "format": "byte"
+      },
+      "CursorLimit": {
+        "description": "A cursor limit, the max number of records to return.",
+        "type": "integer",
+        "format": "int32",
+        "minimum": 0,
+        "maximum": 50
+      },
+      "CursorInfo": {
+        "description": "Links to the next and prev pages.",
+        "type": "object",
+
+        "properties": {
+          "previous": {
+            "$ref": "#/components/schemas/Cursor"
+          },
+          "next": {
+            "$ref": "#/components/schemas/Cursor"
+          }
+        }
+      },
+      "PresenceStatus": {
+				"description": "A presence status.",
+				"type": "string",
+				"enum": [
+					"Offline",
+					"Available",
+					"Busy",
+					"DoNotDisturb",
+					"OnThePhone"
+				]
+			},
+      "UserPresenceInfo": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "$ref": "#/components/schemas/PresenceStatus"
+          },
+          "text": {
+            "description": "A short message set by the user.",
+            "type": "string"
+          }
+        }
+      },
+      "UserPresence": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "$ref": "#/components/schemas/UserId"
+          },
+          "status": {
+            "$ref": "#/components/schemas/PresenceStatus"
+          },
+          "text": {
+            "description": "A short message set by the user.",
+            "type": "string"
+          }
+        }
+      },
+      "UserPresenceList": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "A list of user status records.",
+            "type": "array",
+            "x-canon-cardinality": "LIST",
+            "items": {
+              "$ref": "#/components/schemas/UserPresence"
+            }
+          }
+        }
+      },
+      "UserPresencePage": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "description": "A list of user status records.",
+            "type": "array",
+            "x-canon-cardinality": "LIST",
+            "items": {
+              "$ref": "#/components/schemas/UserPresence"
+            }
+          },
+          "cursors": {
+            "$ref": "#/components/schemas/CursorInfo"
+          }
+        }
+      }
+		},
+		"parameterSets": {
+			"pagination": {
+				"cursor": {
+					"description": "Cursor position",
+					"in": "query",
+					"required": false,
+					"schema": {
+						"$ref": "#/components/schemas/Cursor"
+					}
+				},
+        "limit": {
+          "description": "max records to return",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "$ref": "#/components/schemas/CursorLimit"
+          }
+        }
+			}
+		}
+	}
+}
