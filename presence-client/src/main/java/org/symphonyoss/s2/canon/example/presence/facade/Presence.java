@@ -41,7 +41,8 @@ import org.symphonyoss.s2.canon.example.presence.canon.UserId;
 import org.symphonyoss.s2.canon.example.presence.canon.UserPresence;
 import org.symphonyoss.s2.canon.example.presence.canon.UserPresenceEntity.Builder;
 import org.symphonyoss.s2.canon.runtime.exception.ServerErrorException;
-import org.symphonyoss.s2.fugue.IFugueComponent;
+
+import com.symphony.oss.fugue.IFugueComponent;
 
 public class Presence implements IPresence, IFugueComponent
 {
