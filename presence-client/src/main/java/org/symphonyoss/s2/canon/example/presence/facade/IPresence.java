@@ -36,7 +36,8 @@ import java.util.Collection;
 import org.symphonyoss.s2.canon.example.presence.canon.IUserPresence;
 import org.symphonyoss.s2.canon.example.presence.canon.IUserPresenceInfo;
 import org.symphonyoss.s2.canon.example.presence.canon.UserId;
-import org.symphonyoss.s2.canon.runtime.exception.ServerErrorException;
+
+import com.symphony.oss.canon.runtime.exception.ServerErrorException;
 
 public interface IPresence 
 {
