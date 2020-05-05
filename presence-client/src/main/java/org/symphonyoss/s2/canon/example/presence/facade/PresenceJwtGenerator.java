@@ -23,7 +23,7 @@
 
 package org.symphonyoss.s2.canon.example.presence.facade;
 
-import org.symphonyoss.s2.canon.runtime.jjwt.Hs256JwtGenerator;
+import com.symphony.oss.canon.runtime.jjwt.Hs256JwtGenerator;
 
 public class PresenceJwtGenerator extends Hs256JwtGenerator
 {

@@ -38,8 +38,9 @@ import org.symphonyoss.s2.canon.example.presence.canon.UserId;
 import org.symphonyoss.s2.canon.example.presence.canon.UserPresenceInfo;
 import org.symphonyoss.s2.canon.example.presence.canon.UsersUserIdPutHttpRequest;
 import org.symphonyoss.s2.canon.example.presence.facade.PresenceJwtGenerator;
-import org.symphonyoss.s2.canon.runtime.IModelRegistry;
-import org.symphonyoss.s2.canon.runtime.ModelRegistry;
+
+import com.symphony.oss.canon.runtime.IModelRegistry;
+import com.symphony.oss.canon.runtime.ModelRegistry;
 
 /**
  * Create user 4 from hard coded values using the REST endpoint.

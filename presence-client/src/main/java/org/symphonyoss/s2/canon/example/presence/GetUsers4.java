@@ -36,8 +36,9 @@ import org.symphonyoss.s2.canon.example.presence.canon.PresenceModel;
 import org.symphonyoss.s2.canon.example.presence.canon.UserId;
 import org.symphonyoss.s2.canon.example.presence.canon.UsersUserIdGetHttpRequest;
 import org.symphonyoss.s2.canon.example.presence.facade.PresenceJwtGenerator;
-import org.symphonyoss.s2.canon.runtime.IModelRegistry;
-import org.symphonyoss.s2.canon.runtime.ModelRegistry;
+
+import com.symphony.oss.canon.runtime.IModelRegistry;
+import com.symphony.oss.canon.runtime.ModelRegistry;
 
 /**
  * Fetch user 4 using the REST endpoint.

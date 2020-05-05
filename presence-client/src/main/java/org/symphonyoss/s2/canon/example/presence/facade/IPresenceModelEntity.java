@@ -31,7 +31,7 @@
 package org.symphonyoss.s2.canon.example.presence.facade;
 
 
-import org.symphonyoss.s2.canon.runtime.IEntity;
+import com.symphony.oss.canon.runtime.IEntity;
 
 public interface IPresenceModelEntity extends IEntity
 {
