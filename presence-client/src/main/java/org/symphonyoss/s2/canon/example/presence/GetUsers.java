@@ -63,7 +63,7 @@ public class GetUsers
   public static void main(String[] argv) throws Exception
   {
     IModelRegistry          registry = new ModelRegistry().withFactories(PresenceModel.FACTORIES);
-    PresenceHttpModelClient client  = new PresenceHttpModelClient(registry, PresenceConstants.SERVER_URL, null, new PresenceJwtGenerator());
+    PresenceHttpModelClient client  = new PresenceHttpModelClient(registry, PresenceConstants.SERVER_URL, null, new PresenceJwtGenerator(), null);
     
     UsersGetHttpRequest request = client.newUsersGetHttpRequestBuilder()
       .withCursor(Cursor.newBuilder().build(ImmutableByteArray.newInstance("Hello".getBytes())))

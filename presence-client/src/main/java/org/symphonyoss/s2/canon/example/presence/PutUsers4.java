@@ -62,7 +62,7 @@ public class PutUsers4
   public static void main(String[] argv) throws Exception
   {
     IModelRegistry          registry = new ModelRegistry().withFactories(PresenceModel.FACTORIES);
-    PresenceHttpModelClient client  = new PresenceHttpModelClient(registry, PresenceConstants.SERVER_URL, null, new PresenceJwtGenerator());
+    PresenceHttpModelClient client  = new PresenceHttpModelClient(registry, PresenceConstants.SERVER_URL, null, new PresenceJwtGenerator(), null);
     
     IUserPresenceInfo japiPayload = new UserPresenceInfo.Builder()
         .withStatus(PresenceStatus.DoNotDisturb)
