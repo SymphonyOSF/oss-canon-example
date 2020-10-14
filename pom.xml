@@ -22,7 +22,7 @@
 	<parent>
 		<groupId>com.symphony.oss</groupId>
 		<artifactId>oss-parent-pom</artifactId>
-		<version>0.4.0</version><!-- oss-parent-pom -->
+		<version>0.4.1</version><!-- oss-parent-pom -->
 	</parent>
 
   <groupId>com.symphony.oss.canon.example</groupId>
@@ -122,9 +122,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<source.code.version>1.8</source.code.version>
 		<target.code.version>1.8</target.code.version>
-    <oss.commons.version>0.2.0</oss.commons.version>
-    <oss.fugue.version>0.2.0</oss.fugue.version>
-    <oss.canon.version>0.2.0</oss.canon.version>
+    <oss.commons.version>0.2.1</oss.commons.version>
+    <oss.fugue.version>0.2.16</oss.fugue.version>
+    <oss.canon.version>0.3.1</oss.canon.version>
     <canon.template.groupid>com.symphony.oss.canon</canon.template.groupid>
     <canon.template.java>canon-template-java</canon.template.java>
     <canon.template.version>${oss.canon.version}</canon.template.version>
@@ -155,7 +155,7 @@
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
-        <version>1.0.13</version>
+        <version>1.2.3</version>
       </dependency>
 
     </dependencies>
